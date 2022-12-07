@@ -7,30 +7,7 @@ app = Flask(__name__)
 
 message_list = []
 
-MESSAGES_FILE = "../templates/messages.json"
-
 max_messages = 30
-
-
-def load_messages():
-    global messages_list
-    if not path.isfile(MESSAGES_FILE):
-        print(f"Can't find file {MESSAGES_FILE}")
-        return []
-
-    with open(MESSAGES_FILE, "r") as mess_file:
-        json_data = json.load(mess_file)
-        return json_data["messages"]
-
-
-messages_list = load_messages()
-
-
-def save_messages():
-    global messages_list
-    with open(MESSAGES_FILE, "w") as mess_file:
-        json_data = {"messages": messages_list}
-        json.dump(json_data, mess_file)
 
 
 def add_message(name, text):
